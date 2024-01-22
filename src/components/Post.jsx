@@ -4,7 +4,13 @@ import likeIcon from "../assets/like.svg";
 import commentIcon from "../assets/comment.svg";
 import shareIcon from "../assets/share.svg";
 import saveIcon from "../assets/save.svg";
+
 function Post({ userProfileImageUrl, postImageUrl, username }) {
+  // Generate random values for post details
+  const likes = Math.floor(Math.random() * 10000); // Random number of likes
+  const comments = Math.floor(Math.random() * 100); // Random number of comments
+  const hoursAgo = Math.floor(Math.random() * 24); // Random number of hours ago
+
   return (
     <>
       <div className="post w-full px-20">
@@ -19,7 +25,9 @@ function Post({ userProfileImageUrl, postImageUrl, username }) {
             </div>
             <div className="username text-sm font-bold">
               {username || "hiral_codes "}
-              <span className="text-sm opacity-50 font-thin">&nbsp;&bull; 1 h</span>
+              <span className="text-sm opacity-50 font-thin">
+                &nbsp;&bull; {hoursAgo}h
+              </span>
             </div>
           </div>
           <div>
@@ -49,16 +57,16 @@ function Post({ userProfileImageUrl, postImageUrl, username }) {
             <img src={saveIcon} alt="" />
           </div>
         </div>
-        <div className="likes py-2">6,662 Likes</div>
+        <div className="likes py-2">{likes} Likes</div>
         <div className="username text-sm font-bold">
           {username || "hiral_codes "} 
           <span className="text-sm  font-thin">
-            Caption goes here Lorem ipsum dolor sit, amet consectetur
+            &nbsp;Caption goes here Lorem ipsum dolor sit, amet consectetur
             adipisicing elit.
           </span>
         </div>
         <div className="text-sm font-thin py-2 opacity-60 cursor-pointer">
-          View all 69 comments
+          View all {comments} comments
         </div>
         <input
           type="text"

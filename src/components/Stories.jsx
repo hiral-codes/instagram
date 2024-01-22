@@ -1,24 +1,14 @@
+// Stories.js
+
 import React, { useState, useRef, useEffect } from 'react';
 import Story from './Story';
-
-const users = [];
-
-for (let i = 1; i <= 40; i++) {
-  users.push({
-    "username": `user${i}`,
-    "url": `https://picsum.photos/id/${i*4}/200/300`
-  });
-}
-
-// Log the users array
-console.log(users);
-
+import UserDataFetcher from './UserDataFetcher'; // Import UserDataFetcher component
 
 function Stories() {
   const containerRef = useRef(null);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [showLeftButton, setShowLeftButton] = useState(false);
-  const [showRightButton, setShowRightButton] = useState(false); // Set to false initially
+  const [showRightButton, setShowRightButton] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,15 +41,21 @@ function Stories() {
 
   return (
     <div className='relative'>
-      <div
-        ref={containerRef}
-        className='w-full h-24 bg-black py-4 px-2 sm:px-4 md:px-8 lg:flex space-x-2 overflow-hidden overflow-x-scroll flex-nowrap relative'
-      >
-        {/* Assuming 'users' is defined elsewhere */}
-        {users.map((user, index) => (
-          <Story key={index} username={user.username} url={user.url} />
-        ))}
-      </div>
+      {/* Use UserDataFetcher and provide a render prop for rendering the fetched data */}
+      <UserDataFetcher>
+        {(userDataArray) => (
+          <div
+            ref={containerRef}
+            className='w-full h-24 bg-black py-4 px-2 sm:px-4 md:px-8 lg:flex space-x-2 overflow-hidden overflow-x-scroll flex-nowrap relative'
+          >
+            {/* Render Story components using the fetched data */}
+            {userDataArray.map((user, index) => (
+              <Story key={index} username={user.username} url={user.userProfileImageUrl} />
+            ))}
+          </div>
+        )}
+      </UserDataFetcher>
+
       {showLeftButton && (
         <button
           className='absolute top-0 left-0 h-full bg-none px-2 text-white'

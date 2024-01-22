@@ -1,15 +1,57 @@
-import React from "react";
-import Stories from "./Stories";
-import Post from "./Post";
-
+import React, { useState, useEffect } from 'react';
+import Stories from './Stories';
+import Post from './Post';
+import axios from 'axios';
 const Content = () => {
+  const [userDataArray, setUserDataArray] = useState([]); // Move state declaration inside the component
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedData = [];
+
+        for (let i = 1; i <= 40; i++) {
+          const response = await axios.get('https://randomuser.me/api/');
+          const user = response.data.results[0];
+
+          const mappedUserData = {
+            username: `${user.name.first}_${user.name.last}`.toLowerCase(),
+            userProfileImageUrl: user.picture.large,
+          };
+
+          fetchedData.push(mappedUserData);
+        }
+
+        setUserDataArray(fetchedData);
+      } catch (error) {
+        console.error('Error fetching data from RandomUser API:', error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const post = [];
+
+  for (let i = 1; i <= 40; i++) {
+    post.push({
+      postImageUrl: `https://picsum.photos/id/${i * 2}/1080/720`,
+    });
+  }
   return (
     <div className="w-full h-screen flex overflow-y-scroll">
       <div className="posts w-2/3 h-full">
         <div className="story-container w-3/4 mx-auto pt-5">
           <Stories />
           <div className="postcontainer w-full pt-6">
-            <Post/>
+          {userDataArray.map((userData, index) => (
+              <Post
+                key={index}
+                username={userData.username}
+                postImageUrl={post[index].postImageUrl} // Use the correct index for postImageUrl
+                userProfileImageUrl={userData.userProfileImageUrl}
+              />
+            ))}
           </div>
         </div>
       </div>

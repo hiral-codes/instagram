@@ -7,8 +7,8 @@ const Story = ({ username, url }) => {
   return (
     <>
       <div className="wrapper flex flex-col items-center justify-center">
-        <div className="storybg bg-gradient-to-tr from-pink-500 to-purple-500  p-[3px] rounded-full flex-shrink-0 overflow-hidden">
-          <div className="story w-14 h-14 rounded-full bg-black flex-shrink-0 p-[2px]">
+        <div className="storybg bg-gradient-to-b from-[#DE00AE] via-[#F38D00] to-[#E09000]  p-[2.5px] rounded-full flex-shrink-0 overflow-hidden">
+          <div className="story w-16 h-16 rounded-full bg-black flex-shrink-0 p-[2px]">
             <img
               src={url}
               alt=""

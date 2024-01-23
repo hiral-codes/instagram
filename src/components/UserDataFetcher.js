@@ -1,3 +1,5 @@
+// UserDataFetcher.js
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -7,21 +9,23 @@ const UserDataFetcher = ({ onDataFetched, children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const requests = Array.from({ length: 10 }, (_, index) =>
-          axios.get('https://randomuser.me/api/')
-        );
-    
-        const responses = await Promise.all(requests);
-        const fetchedData = responses.map((response) => {
+        const fetchedData = [];
+
+        for (let i = 1; i <= 10; i++) {
+          const response = await axios.get('https://randomuser.me/api/');
           const user = response.data.results[0];
-          return {
+
+          const mappedUserData = {
             username: `${user.name.first}_${user.name.last}`.toLowerCase(),
             userProfileImageUrl: user.picture.large,
           };
-        });
-    
+
+          fetchedData.push(mappedUserData);
+        }
+
         setUserDataArray(fetchedData);
-    
+
+        // Pass the fetched data to the parent component
         if (onDataFetched) {
           onDataFetched(fetchedData);
         }
@@ -29,9 +33,9 @@ const UserDataFetcher = ({ onDataFetched, children }) => {
         console.error('Error fetching data from RandomUser API:', error.message);
       }
     };
-  
+
     fetchData();
-  }, []); // Empty dependency array ensures that the effect runs only once on mount
+  }, [onDataFetched]);
 
   return children(userDataArray); // Render the children component with the fetched data
 };

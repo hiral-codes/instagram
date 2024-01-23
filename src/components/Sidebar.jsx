@@ -106,7 +106,7 @@ function Sidebar() {
           </ul>
         </div>
       </div>
-      <div className="footer-m fixed bottom-0 left-0 right-0 h-16 flex items-center justify-evenly w-full z-10 bg-black md:hidden lg:hidden">
+      <div className="footer-m fixed bottom-0 left-0 right-0 h-12 flex items-center justify-evenly w-full z-10 bg-black md:hidden lg:hidden">
         <button><img className="w-7" src={homeLogo} alt="" /></button>
         <button><img className="w-7" src={searchLogo} alt="" /></button>
         <button><img className="w-7" src={createLogo} alt="" /></button>

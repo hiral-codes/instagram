@@ -11,7 +11,7 @@ const Content = () => {
   const [userDataArray, setUserDataArray] = useState([]);
   return (
     <div className="w-full h-screen flex overflow-y-scroll">
-      <div className="header-m fixed top-0 left-0 right-0 h-16 flex items-center z-10 justify-between px-2 w-full bg-black md:hidden lg:hidden">
+      <div className="header-m fixed top-0 left-0 right-0 h-12 flex items-center z-10 justify-between px-2 w-full bg-black md:hidden lg:hidden">
         <button>
           <img className="w-28" src={iglogo} alt="" />
         </button>

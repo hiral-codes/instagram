@@ -10,10 +10,12 @@
       display: none;
     }
     .story-container{
+        padding-top: 0;
       width: 100%;
     }
     .pc{
       width: 100%;
+      padding-top: 65px;
     }
     .pst{
         width: 100%;

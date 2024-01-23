@@ -106,6 +106,13 @@ function Sidebar() {
           </ul>
         </div>
       </div>
+      <div className="footer-m fixed bottom-0 left-0 right-0 h-16 flex items-center justify-evenly w-full z-10 bg-black md:hidden lg:hidden">
+        <button><img className="w-10" src={homeLogo} alt="" /></button>
+        <button><img className="w-10" src={searchLogo} alt="" /></button>
+        <button><img className="w-10" src={createLogo} alt="" /></button>
+        <button><img className="w-10" src={reelsLogo} alt="" /></button>
+        <button className="w-10 h-10 rounded-full bg-white"></button>
+      </div>
     </>
   );
 }

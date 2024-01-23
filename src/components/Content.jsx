@@ -3,11 +3,23 @@ import Stories from "./Stories";
 import Post from "./Post";
 import UserDataFetcher from "./UserDataFetcher";
 import UserProfileCard from "./UserProfileCard";
+import iglogo from "../assets/logo.svg";
+import like from "../assets/notifications.svg";
+import dmLogo from "../assets/dm.svg";
 
 const Content = () => {
   const [userDataArray, setUserDataArray] = useState([]);
   return (
     <div className="w-full h-screen flex overflow-y-scroll">
+      <div className="header-m fixed top-0 left-0 right-0 h-16 flex items-center z-10 justify-between px-2 w-full bg-black md:hidden lg:hidden">
+        <button>
+          <img className="w-28" src={iglogo} alt="" />
+        </button>
+        <button className="flex items-center gap-2">
+          <img className="w-8" src={like} alt="" />
+          <img className="w-8" src={dmLogo} alt="" />
+        </button>
+      </div>
       <div className="posts pc w-2/3 h-full">
         <div className="story-container w-3/4 mx-auto pt-5">
           <Stories />

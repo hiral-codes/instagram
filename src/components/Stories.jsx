@@ -58,7 +58,7 @@ function Stories() {
 
       {showLeftButton && (
         <button
-          className='absolute top-0 left-0 h-full bg-none px-2 text-white'
+          className='absolute top-0 left-0 h-full bg-none px-2 text-white btckm'
           onClick={handleLeftButtonClick}
         >
           <span className='w-6 h-6 white flex items-center justify-center rounded-full mb-3 text-black'>&lt;</span>
@@ -66,7 +66,7 @@ function Stories() {
       )}
       {showRightButton && (
         <button
-          className='absolute top-0 right-0 h-full bg-none px-2 text-white'
+          className='absolute top-0 right-0 h-full bg-none px-2 text-white btckm'
           onClick={handleRightButtonClick}
         >
           <span className='w-6 h-6 mb-3 white flex items-center justify-center rounded-full text-black'>&gt;</span>

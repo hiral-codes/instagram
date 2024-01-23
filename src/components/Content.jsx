@@ -16,8 +16,8 @@ const Content = () => {
           <img className="w-28" src={iglogo} alt="" />
         </button>
         <button className="flex items-center gap-4">
-          <img className="w-6" src={like} alt="" />
-          <img className="w-6" src={dmLogo} alt="" />
+          <img className="w-7" src={like} alt="" />
+          <img className="w-7" src={dmLogo} alt="" />
         </button>
       </div>
       <div className="posts pc w-2/3 h-full">

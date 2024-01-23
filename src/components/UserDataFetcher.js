@@ -6,36 +6,33 @@ import axios from 'axios';
 const UserDataFetcher = ({ onDataFetched, children }) => {
   const [userDataArray, setUserDataArray] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const fetchedData = [];
-
-        for (let i = 1; i <= 10; i++) {
-          const response = await axios.get('https://randomuser.me/api/');
-          const user = response.data.results[0];
-
-          const mappedUserData = {
-            username: `${user.name.first}_${user.name.last}`.toLowerCase(),
-            userProfileImageUrl: user.picture.large,
-          };
-
-          fetchedData.push(mappedUserData);
-        }
-
-        setUserDataArray(fetchedData);
-
-        // Pass the fetched data to the parent component
-        if (onDataFetched) {
-          onDataFetched(fetchedData);
-        }
-      } catch (error) {
-        console.error('Error fetching data from RandomUser API:', error.message);
+  const fetchData = async () => {
+    try {
+      const requests = Array.from({ length: 10 }, (_, index) =>
+        axios.get('https://randomuser.me/api/')
+      );
+  
+      const responses = await Promise.all(requests);
+      const fetchedData = responses.map((response) => {
+        const user = response.data.results[0];
+        return {
+          username: `${user.name.first}_${user.name.last}`.toLowerCase(),
+          userProfileImageUrl: user.picture.large,
+        };
+      });
+  
+      setUserDataArray(fetchedData);
+  
+      if (onDataFetched) {
+        onDataFetched(fetchedData);
       }
-    };
-
-    fetchData();
-  }, [onDataFetched]);
+    } catch (error) {
+      console.error('Error fetching data from RandomUser API:', error.message);
+    }
+  };
+  
+  fetchData();
+  
 
   return children(userDataArray); // Render the children component with the fetched data
 };

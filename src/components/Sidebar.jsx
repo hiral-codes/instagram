@@ -111,7 +111,7 @@ function Sidebar() {
         <button><img className="w-7" src={searchLogo} alt="" /></button>
         <button><img className="w-7" src={createLogo} alt="" /></button>
         <button><img className="w-7" src={reelsLogo} alt="" /></button>
-        <button className="w-10 h-10 rounded-full bg-white"></button>
+        <button className="w-7 h-7 rounded-full bg-white"></button>
       </div>
     </>
   );

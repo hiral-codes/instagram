@@ -46,7 +46,7 @@ function Stories() {
         {(userDataArray) => (
           <div
             ref={containerRef}
-            className='w-full h-24 bg-black py-4 px-2 sm:px-4 md:px-8 lg:flex space-x-2 overflow-hidden overflow-x-scroll flex-nowrap relative'
+            className='w-full h-24 bg-black py-4 px-2 flex space-x-2 overflow-hidden overflow-x-scroll flex-nowrap relative'
           >
             {/* Render Story components using the fetched data */}
             {userDataArray.map((user, index) => (

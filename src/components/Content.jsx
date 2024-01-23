@@ -8,7 +8,7 @@ const Content = () => {
   const [userDataArray, setUserDataArray] = useState([]);
   return (
     <div className="w-full h-screen flex overflow-y-scroll">
-      <div className="posts w-2/3 h-full">
+      <div className="posts pc w-2/3 h-full">
         <div className="story-container w-3/4 mx-auto pt-5">
           <Stories />
           <div className="postcontainer w-full pt-6">

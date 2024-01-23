@@ -13,7 +13,7 @@ function Post({ userProfileImageUrl, postImageUrl, username }) {
 
   return (
     <>
-      <div className="post w-full px-20">
+      <div className="post pst w-full px-20">
         <div className="w-full flex items-center justify-between pb-4">
           <div className="userprofile flex items-center gap-2">
             <div className="profile w-10 h-10 rounded-full">
